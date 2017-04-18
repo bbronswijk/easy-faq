@@ -1,0 +1,9 @@
+/* tiny MCE button */
+i.mce-i-faq{
+	line-height: 18px !important;
+}
+
+i.mce-i-faq:before {
+    font-family: "fontawesome";
+    content: "\f1cd";
+}

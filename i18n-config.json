@@ -1,0 +1,33 @@
+{
+	"vendor": {
+		"plugins/qtranslate-x": "3.4"
+	},
+	"admin-config": {
+		"faq": {
+			"pages": {
+				"admin.php": "page=faq_page"
+			},
+			"anchors": {
+				"lsb": {
+					"jquery": "#wpbody-content h2",
+					"where": "after"
+				}
+			},
+			"forms": {
+				"faq-form": {
+					"fields": {
+						"preview": {
+							"jquery": ".preview_content"
+						},
+						"title": {
+							"jquery": "input.title"
+						},
+						"text": {
+							"jquery": "textarea.text"
+						}
+					}
+				}
+			}
+		}
+	}
+}

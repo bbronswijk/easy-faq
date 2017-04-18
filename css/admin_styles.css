@@ -1,0 +1,110 @@
+/* admin page */
+.faq-container{
+	width: 700px;
+	background:#fff;
+	margin-top:20px;
+	border:1px solid #d1d1d1;
+	-moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+	box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+.items > p{
+	padding: 15px 30px; 
+}
+
+.preview_item{
+	padding: 20px;
+	overflow:auto;
+}
+
+.preview_content{
+	float:left;
+}
+
+.preview_content:hover{
+	cursor:pointer;
+}
+
+.edit_buttons{
+	float:right;
+}
+
+.edit_buttons span:hover{
+	color:#ca4f4f;
+	cursor: pointer;
+}
+
+.ui-state-highlight{ 
+	border: 2px dashed #f1f1f1;
+	height: 38px;
+	margin: 10px;
+}
+
+#item_default{
+	display: none;
+}
+
+.edit_item{
+	display: none;
+	padding: 20px;
+	background: #f7f7f7;
+  	border-top: 1px solid #f1f1f1;
+  	border-bottom: 1px solid #f1f1f1;
+}
+
+.edit_item th{
+	width: 150px;
+	text-align: left;
+	vertical-align: top;
+}
+
+.edit_item input{
+	padding: 5px 8px;
+}
+
+.edit_item textarea{
+	padding: 5px 8px;
+	width: 288px;
+	max-width: 288px;
+	min-height: 140px;
+	box-sizing: border-box;
+}
+
+.add_category:before{
+	content: " ";
+    position: absolute;
+    margin-left: -0px;
+    margin-top: -20px;
+    width: 0;
+    height: 0;
+    border-bottom: 12px solid #fff;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;    	
+}
+
+.add_category{
+	display: none;
+	margin-top: 15px;
+	padding: 8px;
+	background: #fff;
+	border: 1px solid #f1f1f1;
+	width: 300px;
+	
+	-moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0 0 4px rgba(0,0,0,0.1);
+	box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+.buttons{
+	padding: 15px 20px;
+}
+
+.buttons p{
+	color: #888;
+	margin:5px ;
+}
+
+.buttons p strong{
+	color: #000;
+}
