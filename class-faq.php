@@ -15,18 +15,19 @@ class Faq extends Easy_Faq_Admin{
 	// add item to database
 	public function addFaq() {
 		global $wpdb;
-		global $cur_category;
 				
 		// check if ajax call is legit
 		if (!isset($_POST['faq_nonce']) || !wp_verify_nonce($_POST['faq_nonce'], 'faq_nonce')) {
 			die('permission check denied');
 		}
 		
+		$cur_cat = $_POST['cur_category'];
+
 		$currentNumber = $this->CountFaq();
 		
 		$numberFaq = $currentNumber + 1;
 		
-		$wpdb -> insert($wpdb -> prefix . 'faq', array('title' => 'New Item', 'text' => '', 'position' => $numberFaq, 'category' => $cur_category));
+		$wpdb -> insert($wpdb -> prefix . 'faq', array('title' => 'New Item', 'text' => '', 'position' => $numberFaq, 'category' => $cur_cat));
 		
 		// return id of inserted item
 		echo $wpdb -> insert_id;

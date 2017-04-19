@@ -13,7 +13,7 @@
 		<select class="select_category" onchange="location = '?page=faq_page&category='+this.options[this.selectedIndex].value;">
 			<?php $this->category->getCategoryOptions(); ?>
 		</select>
-									
+		<input id="current_category" value="<?= $cur_category ?>" style="display: none;"/>							
 		<input class="delete_category_button button" id="<?= $cur_category ?>" type="button" value="Delete this Category" />
 		<input class="new_category button" type="button" value="New Category" />
 		<div class="add_category">
@@ -150,7 +150,7 @@
 		<p><i>Plak de volgende shortcode op de pagina om de faq weer te geven. </i><strong>[faq category="<?= $cur_category ?>"]</strong></p>
 		<hr>
 		<p><strong>Laat de categorie ingeklapt zien</strong></br>[faq category="<?= $cur_category ?>" collapse="true"]</p>
-		<p><i>Plak de shortcodes van de verschillende categorie&euml;n achter elkaar om de complete lijst van vragen weer te geven. Of gebruik de shortcode [faq][</i></p>
+		<p><i>Plak de shortcodes van de verschillende categorie&euml;n achter elkaar om de complete lijst van vragen weer te geven. Of gebruik de shortcode [faq]</i></p>
 	</div>
 	
 	<?php 

@@ -29,6 +29,10 @@ var faqPlugin = (function($) {
 	var $spinner = $faqPlugin.find('.spinner');
 	var $qtranslate = $('.qtranxs-lang-switch');
 	
+	var cur_category = $('#current_category').val();
+
+	alert(cur_category);
+	
 	// bind events
 	$form.submit(saveForm);
 	$title.on('keyup', updatePreview );
@@ -138,6 +142,7 @@ var faqPlugin = (function($) {
 		data = { 
 			action : 'add_faq_db',
 			faq_nonce : faq_vars.faq_nonce,
+			cur_category : cur_category
 		};
 		
 		$.post(ajaxurl,data,function(response){
