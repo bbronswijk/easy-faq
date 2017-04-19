@@ -5,21 +5,22 @@
 ?>
 		
 <div class="wrap faq-plugin">
-	<h2>Frequently Asked Questions</h2>
+	<div class="faq-page-header">
+		<h2>Frequently Asked Questions</h2>
+			
+		<p>Op deze pagina kunt u de FAQ. Je kunt een grote lijst aanmaken of de vragen opdelen in verschillende categorieen.</p>
 		
-	<p>Op deze pagina kunt u de FAQ. Je kunt een grote lijst aanmaken of de vragen opdelen in verschillende categorieen.</p>
-	
-	<select class="select_category" onchange="location = '?page=faq_page&category='+this.options[this.selectedIndex].value;">
-		<?php $this->category->getCategoryOptions(); ?>
-	</select>
-								
-	<input class="delete_category_button button" id="<?= $cur_category ?>" type="button" value="Delete this Category" />
-	<input class="new_category button" type="button" value="New Category" />
-	<div class="add_category">
-		<input class="category_input" type="text" />
-		<input class="add_category_button button-primary" type="button" value="Add Category" />					
-	</div>
-				
+		<select class="select_category" onchange="location = '?page=faq_page&category='+this.options[this.selectedIndex].value;">
+			<?php $this->category->getCategoryOptions(); ?>
+		</select>
+									
+		<input class="delete_category_button button" id="<?= $cur_category ?>" type="button" value="Delete this Category" />
+		<input class="new_category button" type="button" value="New Category" />
+		<div class="add_category">
+			<input class="category_input" type="text" />
+			<input class="add_category_button button-primary" type="button" value="Add Category" />					
+		</div>
+	</div>				
 	<form class="faq-container" id="faq-form" action="" method="POST">
 		<div id="sortable" class="container">
 			<div class="buttons" style="border-bottom: 1px solid #ddd;">
@@ -144,5 +145,28 @@
 			
 		</div> <!-- /sortable -->
 	</form>
+	<div class="faq-container shortcode-metabox">
+		<h3>FAQ weergeven</h3>
+		<p><i>Plak de volgende shortcode op de pagina om de faq weer te geven. </i><strong>[faq category="<?= $cur_category ?>"]</strong></p>
+		<hr>
+		<p><strong>Laat de categorie ingeklapt zien</strong></br>[faq category="<?= $cur_category ?>" collapse="true"]</p>
+		<p><i>Plak de shortcodes van de verschillende categorie&euml;n achter elkaar om de complete lijst van vragen weer te geven. Of gebruik de shortcode [faq][</i></p>
+	</div>
+	
+	<?php 
+		
+		if ( is_plugin_active( 'qtranslate-x/qtranslate.php' ) ) {
+			echo '<div class="faq-container qtranslate-metabox">';
+			echo '<h3>ondersteuning qtranslate</h3>';
+			echo '<p>Deze FAQ-plugin ondersteund ook de qtranslate plugin.</p>';
+			echo '<p>Worden language knoppen niet weergegeven? Voeg dan de volgende code "plugins/easy-faq/i18n-config.json" toe aan het tekstvak met configuratie bestanden.</p>';
+			
+			echo '<p><a href="'.get_admin_url().'options-general.php?page=qtranslate-x#integration" class="button-primary">configuratie bestanden</a></p>';
+			echo '<p>Je kunt ook een specifieke engelse en nederlandse categorie aanmaken. Niet alle vragen hoeven dan te worden vertaald. Het kan namelijk zo zijn dat internationale bezoekers niet exact dezelfde vragen hebben als de nederlandse.</p>';
+			echo '</div>';
+		}
+		
+	?>
+
 </div> <!-- /wrap -->
 			

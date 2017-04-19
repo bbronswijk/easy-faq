@@ -1,12 +1,49 @@
 /* admin page */
+.faq-plugin{
+	max-width: 1115px;
+}
+
+.faq-page-header{
+	display: block;
+	max-width: 700px;
+}
+
 .faq-container{
-	width: 700px;
 	background:#fff;
 	margin-top:20px;
 	border:1px solid #d1d1d1;
 	-moz-box-shadow: 0 0 4px rgba(0,0,0,0.1);
 	-webkit-box-shadow: 0 0 4px rgba(0,0,0,0.1);
 	box-shadow: 0 0 4px rgba(0,0,0,0.1);
+	margin-right: 30px;
+}
+
+form.faq-container{
+	width: 700px;
+	float: left;
+	
+}
+
+div.shortcode-metabox{
+	width: 300px;
+	float: left;
+	padding: 10px 25px;
+}
+
+div.shortcode-metabox h3{
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
+}
+
+div.qtranslate-metabox{
+	width: 300px;
+	float: right;
+	padding: 10px 25px;
+}
+
+div.qtranslate-metabox h3{
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 10px;
 }
 
 .items > p{
