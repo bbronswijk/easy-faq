@@ -151,7 +151,7 @@ var faqPlugin = (function($) {
 				$new_item = $('#item_'+id);
 								
 				// set the id name and value of the items of the clone		
-				$new_item.find('.preview_content').text('Vraag '+id);
+				$new_item.find('.preview_content').text('New item');
 				$new_item.find('.title').attr('name','title_'+id);
 				$new_item.find('.title').attr('value','Vraag '+id);
 				$new_item.find('.text').attr('name','text_'+id);
