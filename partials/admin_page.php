@@ -157,12 +157,12 @@
 		
 		if ( is_plugin_active( 'qtranslate-x/qtranslate.php' ) ) {
 			echo '<div class="faq-container qtranslate-metabox">';
-			echo '<h3>ondersteuning qtranslate</h3>';
-			echo '<p>Deze FAQ-plugin ondersteund ook de qtranslate plugin.</p>';
-			echo '<p>Worden language knoppen niet weergegeven? Voeg dan de volgende code "plugins/easy-faq/i18n-config.json" toe aan het tekstvak met configuratie bestanden.</p>';
-			
-			echo '<p><a href="'.get_admin_url().'options-general.php?page=qtranslate-x#integration" class="button-primary">configuratie bestanden</a></p>';
-			echo '<p>Je kunt ook een specifieke engelse en nederlandse categorie aanmaken. Niet alle vragen hoeven dan te worden vertaald. Het kan namelijk zo zijn dat internationale bezoekers niet exact dezelfde vragen hebben als de nederlandse.</p>';
+				echo '<h3>ondersteuning qtranslate</h3>';
+				echo '<p>Deze FAQ-plugin ondersteund ook de qtranslate plugin.</p>';
+				echo '<p>Worden language knoppen niet weergegeven? Voeg dan de volgende code "plugins/easy-faq/i18n-config.json" toe aan het tekstvak met configuratie bestanden.</p>';
+				
+				echo '<p><a href="'.get_admin_url().'options-general.php?page=qtranslate-x#integration" class="button-primary">configuratie bestanden</a></p>';
+				echo '<p>Je kunt ook een specifieke engelse en nederlandse categorie aanmaken. Niet alle vragen hoeven dan te worden vertaald. Het kan namelijk zo zijn dat internationale bezoekers niet exact dezelfde vragen hebben als de nederlandse.</p>';
 			echo '</div>';
 		}
 		

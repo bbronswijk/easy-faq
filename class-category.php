@@ -1,33 +1,34 @@
 <?php
-class Category {
-	
+class Category
+{	
 	public $all;
 		
 	public function __construct(){
 		global $cur_category;
-		$cur_category = $this->getCurrentCategory();
+		$cur_category = $this->current();
 	}
 	
 	// get current category from URL
-	public function getCurrentCategory(){
+	public function current()
+	{
 		if(empty($_GET['category'])){
-			$option = $this->getListCategories();
-			// if get is empty -> return first of the options
-			return reset($option);
-		}
-		else{
+			$option = $this->getOption(); 			
+			return reset($option); // if get is empty -> return first of the options
+		} else{
 			return $_GET['category'];		
 		}	
 	}
 	
-	public function getListCategories(){
+	public function getOption()
+	{
 		return get_option('faq_item_categories');
 	}
 	
-	public function get(){
+	public function get()
+	{
 		$categories = '';
 		
-		foreach ($this->getListCategories() as $option) {
+		foreach ($this->getOption() as $option) {
 			$categories .= $option.',';
 		}
 		
@@ -36,13 +37,13 @@ class Category {
 		die();
 	}
 	
-	public function getCategoryOptions(){
-		if( $this->getListCategories() ){
+	public function getCategoryOptions()
+	{
+		if( $this->getOption() ){
 			
-			$categories = $this->getListCategories();
+			$categories = $this->getOption();
 			
-			global $cur_category;											
-			// get current category		
+			global $cur_category;			
 			$selected = 'selected="selected"';
 			
 			if(!empty($categories)){
@@ -54,11 +55,17 @@ class Category {
 			?> <option value="default" selected="selected" >default</option> <?php
 		}	
 	}
+
+	function get_list($cat = '%'){
+		global $wpdb;    
+		$q_s = $wpdb->get_results("SELECT * FROM ". $wpdb->prefix . "faq WHERE category LIKE '" . $cat . "' ORDER BY position ASC;", ARRAY_A);	
+		return stripslashes_deep($q_s);
+	}
 	
 	// add category from form at admin page -> ajax 
-	public function add(){
-		
-		$option = $this->getListCategories();
+	public function add()
+	{		
+		$option = $this->getOption();
 		
 		if( empty( $option ) ){
 			$categories = array();
@@ -66,11 +73,8 @@ class Category {
 			$categories = $option;
 		}
 		
-		// push new category to options
-		$new_category = $_POST['new_category'];
-		
-		array_push( $categories, $new_category ); 
-		
+		$new_category = $_POST['new_category'];		
+		array_push( $categories, $new_category ); 		
 		update_option( 'faq_item_categories', $categories );
 		
 		die();
@@ -80,21 +84,19 @@ class Category {
 	public function delete(){
 		global $wpdb;
 		
-		$option = $this->getListCategories();
+		$option = $this->getOption();
 		if( empty( $option ) ){
 			return false;
 		} else{
 			$categories = $option;
 		}
 		
-		$delete_category = $_POST['category'];
-		
+		$delete_category = $_POST['category'];		
 		$categories  = array_diff($categories , array($delete_category));
 		
 		update_option( 'faq_item_categories', $categories );
-		$wpdb->query("DELETE FROM ".$wpdb->prefix.'faq'." WHERE category='$delete_category' ",ARRAY_A);
-		
-		
+		$wpdb->query("DELETE FROM ".$wpdb->prefix.'faq'." WHERE category='$delete_category' ", ARRAY_A);
+				
 		die();
 	} 
 	

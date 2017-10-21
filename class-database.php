@@ -1,19 +1,24 @@
 <?php
 
-class Database {
+class Database
+{
+	public function __contstructor()
+	{
+		// setup database if necessary 
+		if( get_option('faq_db_version') != $this->database_version ) $this->database->setup();
+	}
 	
-	public function setup_database(){
+	public function setup()
+	{
 		global $wpdb;
-		
-		$option = array('default');
-		
-		// add_option only gets called when the option not allready exists
-		add_option('faq_item_categories',$option);
-		
-		
+
+		// add_option only gets called when the option not already exists
+		add_option('faq_item_categories', array('default'));
+				
 		// create table if it not already exists
-		if($wpdb->get_var("SHOW TABLES LIKE '".$this->database_name.'faq'."'") != $this->database_name.'faq') {
-			$sql = "CREATE TABLE ".$this->database_name.'faq'." (
+		if($wpdb->get_var("SHOW TABLES LIKE '".$wpdb->prefix."faq'") !== $wpdb->prefix.'faq') {
+
+			$sql = "CREATE TABLE ".$wpdb->prefix."faq (
 					  id int NOT NULL AUTO_INCREMENT,	
 					  title text,
 					  text text, 
@@ -25,6 +30,7 @@ class Database {
 		
 		// store database version in option
 		update_option( 'faq_db_version', $this->database_version );
+		
 	}
 	
 }

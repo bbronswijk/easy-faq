@@ -1,11 +1,25 @@
 <?php
 // Display content on page using shortcode
-class Faq_Shortcode extends Easy_Faq{
-	
-	public function __construct(){} 
+class FaqShortcode extends EasyFaq
+{
+	public function __construct()
+	{
+		add_shortcode($this->shortcode_tag, array($this,'output') );
+	} 
+
+	// gets called in shortcode and also gets called in the faq class
+	function get_list($cat = '%')
+	{
+		global $wpdb;    
+		$q_s = $wpdb->get_results("SELECT * FROM ". $wpdb->prefix . "faq WHERE category LIKE '" . $cat . "' ORDER BY position ASC;", ARRAY_A);	
+		return stripslashes_deep($q_s);
+	}
  
-	public function output_faq($atts) {
-	
+	public function output($atts)
+	{	
+		wp_enqueue_style('faq_style');
+		wp_enqueue_script('faq_script');
+
 		$attr = shortcode_atts( array(
 			'category' => 'all',
 			'collapse' => false,
@@ -14,33 +28,27 @@ class Faq_Shortcode extends Easy_Faq{
 		$category = $attr['category']; 
 		$collapse = $attr['collapse']; 
 		
-		if( $category == 'all' )
-			// if no category is supplied, load all questions
-			$list_items = parent::get_list();
+		if( $category == 'all' )			
+			$list_items = $this->get_list(); // if no category is supplied, load all questions
 		else
-			$list_items = parent::get_list($attr['category']);
+			$list_items = $this->get_list($attr['category']);
 			
-		ob_start();
-				 	
-		if ( $collapse == true  ) echo '<div class="faq-collapse"><div class="faq-cat">'.$category .'</div>';
+		$html = '';
+				
+		if ( $collapse == true  ) $html .= '<div class="faq-collapse"><div class="faq-cat">'.$category .'</div>';
 		
-		echo '<div class="faq">';	
+		$html .= '<div class="faq">';	
 			foreach($list_items as $n => $item){
-				echo '<div class="faq-item">';
-					echo '<div class="question">'.$item['title'].'</div>';
-					echo '<div class="answer">'.$item['text'].'</div>';
-				echo '</div>';
+				$html .= '<div class="faq-item">';
+					$html .= '<div class="question">'.$item['title'].'</div>';
+					$html .= '<div class="answer">'.$item['text'].'</div>';
+				$html .= '</div>';
 			}	
-		echo '</div>';
+		$html .= '</div>';
 		
-		if ( $collapse == true ) echo '</div>';
+		if ( $collapse == true ) $html .= '</div>';
 		
-		
-		$output_string = ob_get_contents();
-		ob_end_clean();
-	
-		return $output_string;
+		return $html;
 	} 
  
-
 }

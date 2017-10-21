@@ -31,8 +31,6 @@ var faqPlugin = (function($) {
 	
 	var cur_category = $('#current_category').val();
 
-	alert(cur_category);
-	
 	// bind events
 	$form.submit(saveForm);
 	$title.on('keyup', updatePreview );
